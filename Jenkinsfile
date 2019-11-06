@@ -5,16 +5,12 @@ pipeline {
             steps {
                 sh 'npm i yarn -g'
             }
-        }
-        stage('Install packages') {
-            steps {
-		sh 'rm -rf node_modules/'
-                sh 'yarn install'
-            }
-        }
-        
+        }       
         stage('Parallel stages') {
-          parallel {
+          steps {
+            sh 'yarn start'
+          }  
+	  parallel {
             stage('Run A') {
               steps {
                 sh 'yarn test-parallel'
