@@ -13,10 +13,12 @@ pipeline {
             }
         }
         
-        stage('Run') {
+        stage('Parallel stages') {
           parallel {
-            steps {
+            stage('Run') {
+              steps {
                 sh 'yarn test'
+              }
             }
           }
 	}
