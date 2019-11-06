@@ -4,6 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@testing-library/cypress": "^5.0.2",
+    "cypress": "^3.6.0"
   }
 }
