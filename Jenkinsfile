@@ -6,6 +6,12 @@ pipeline {
                 sh 'npm i yarn -g'
             }
         }       
+        stage('Install packages') {
+          steps {
+            sh 'rm -rf node_modules/'
+            sh 'yarn install'
+          }
+        }
         stage('run server') {
           steps {
             sh 'yarn start'
