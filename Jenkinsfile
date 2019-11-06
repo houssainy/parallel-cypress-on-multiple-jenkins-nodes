@@ -14,7 +14,7 @@ pipeline {
         }
         stage('run server') {
           steps {
-            sh 'yarn start'
+            sh 'yarn start &'
           }
         }
         stage('Parallel stages') {
