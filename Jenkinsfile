@@ -15,16 +15,15 @@ pipeline {
         
         stage('Parallel stages') {
           parallel {
-            stage('Run') {
+            stage('Run A') {
               steps {
-                sh 'yarn test'
+                sh 'yarn test-parallel'
               }
             }
-	    stage('RUN 2') {
+	    stage('Run B') {
               steps {
-                sh 'date'
-                sh 'yarn -v'
-	      }
+               sh 'yarn test-parallel'
+              }
             }
           }
 	}
