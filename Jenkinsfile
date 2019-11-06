@@ -6,6 +6,11 @@ pipeline {
                 sh 'node -v'
             }
         }
+        stage('Install yarn') {
+            steps {
+                sh 'npm i yarn -g'
+            }
+        }
         stage('Install packages') {
             steps {
                 sh 'yarn install'
