@@ -8,7 +8,7 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "test": "start-server-and-test start http://localhost:3000 cy:run",
-    "test-parallel": "start-server-and-test start http://localhost:3000 'cypress run --record --parallel'"
+    "test-parallel": "start-server-and-test start http://localhost:3000 'cypress run --record --key c50807fa-60f4-48ef-ba50-76c38350b1dd --parallel'"
   },
   "dependencies": {
     "express": "^4.17.1"
