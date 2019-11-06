@@ -20,6 +20,12 @@ pipeline {
                 sh 'yarn test'
               }
             }
+	    stage('RUN 2') {
+              steps {
+                sh 'date'
+                sh 'yarn -v'
+	      }
+            }
           }
 	}
 
