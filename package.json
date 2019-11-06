@@ -7,7 +7,8 @@
     "start": "node index.js",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "start-server-and-test start http://localhost:3000 cy:run"
+    "test": "start-server-and-test start http://localhost:3000 cy:run",
+    "test-parallel": "start-server-and-test start http://localhost:3000 'cypress run --record --parallel'"
   },
   "dependencies": {
     "express": "^4.17.1"
