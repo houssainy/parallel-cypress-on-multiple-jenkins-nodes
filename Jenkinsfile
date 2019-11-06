@@ -12,8 +12,9 @@ pipeline {
                 sh 'yarn install'
             }
         }
-        parallel {
-          stage('Run') {
+        
+        stage('Run') {
+          parallel {
             steps {
                 sh 'yarn test'
             }
