@@ -5,7 +5,7 @@ describe('Test 2', () => {
 
   context('Check integrity', () => {
     it('Test #2', () => {
-      cy.queryByText("Hello World!").should('not.exist');
+      cy.queryByText("Hello koko").should('not.exist');
     });
   });
 });
