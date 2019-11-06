@@ -6,10 +6,12 @@ pipeline {
                 sh 'npm i yarn -g'
             }
         }       
-        stage('Parallel stages') {
+        stage('run server') {
           steps {
             sh 'yarn start'
-          }  
+          }
+        }
+        stage('Parallel stages') {
 	  parallel {
             stage('Run A') {
               steps {
