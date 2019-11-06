@@ -12,12 +12,13 @@ pipeline {
                 sh 'yarn install'
             }
         }
-        stage('Run') {
+        parallel {
+          stage('Run') {
             steps {
                 sh 'yarn test'
             }
-        }
-
+          }
+	}
 
     }
 }
