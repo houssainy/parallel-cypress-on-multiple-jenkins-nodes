@@ -8,6 +8,7 @@ pipeline {
         }
         stage('Install packages') {
             steps {
+		sh 'rm -rf node_modules/'
                 sh 'yarn install'
             }
         }
