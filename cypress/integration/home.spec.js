@@ -5,7 +5,7 @@ describe('Home', () => {
 
   context('Check integrity', () => {
     it('h1 is correct', () => {
-      cy.queryByText("Hello World!").should('exist');
+      cy.queryByText("Google").should('exist');
     });
   });
 });
