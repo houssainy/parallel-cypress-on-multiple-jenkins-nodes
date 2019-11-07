@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent nones
     stages {
       stage('Install yarn') {
           steps {
@@ -20,12 +20,18 @@ pipeline {
       stage('Parallel stages') {
         parallel {
           stage('Run A') {
+            agent {
+              label "Stage A"
+            }
             steps {
               sh 'ifconfig'
               sh "yarn test-parallel"
             }
           }
           stage('Run B') {
+            agent {
+              label "Stage B"
+            }
             steps {
               sh 'ifconfig'
               sh "yarn test-parallel"
