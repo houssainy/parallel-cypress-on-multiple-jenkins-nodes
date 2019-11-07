@@ -11,10 +11,6 @@ pipeline {
             }
             steps {
               sh 'ifconfig'
-              sh 'npm i yarn -g'
-              sh 'rm -rf node_modules/'
-              sh 'yarn install'
-              sh 'yarn start &'
               sh "yarn test-parallel"
             }
           }
@@ -24,10 +20,6 @@ pipeline {
             }
             steps {
               sh 'ifconfig'
-              sh 'npm i yarn -g'
-              sh 'rm -rf node_modules/'
-              sh 'yarn install'
-              sh 'yarn start &'
               sh "yarn test-parallel"
             }
           }
