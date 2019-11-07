@@ -1,23 +1,18 @@
 pipeline {
-    agent none
+    agent any
     stages {
       stage('Install yarn') {
-        agent any
-
         steps {
             sh 'npm i yarn -g'
         }
       }
       stage('Install packages') {
-        agent any
-
         steps {
           sh 'rm -rf node_modules/'
           sh 'yarn install'
         }
       }
       stage('run server') {
-        agent any
         steps {
           sh 'yarn start &'
         }
