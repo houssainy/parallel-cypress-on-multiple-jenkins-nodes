@@ -1,37 +1,36 @@
 pipeline {
     agent any
     stages {
-        stage('Install yarn') {
+      stage('Install yarn') {
+          steps {
+              sh 'npm i yarn -g'
+          }
+      }
+      stage('Install packages') {
+        steps {
+          sh 'rm -rf node_modules/'
+          sh 'yarn install'
+        }
+      }
+      stage('run server') {
+        steps {
+          sh 'yarn start &'
+        }
+      }
+      stage('Parallel stages') {
+        parallel {
+          stage('Run A') {
             steps {
-                sh 'npm i yarn -g'
+              sh "yarn test-parallel --group 'GroupA'"
             }
-        }       
-        stage('Install packages') {
-          steps {
-            sh 'rm -rf node_modules/'
-            sh 'yarn install'
+          }
+          stage('Run B') {
+            steps {
+              sh "yarn test-parallel --group 'GroupB'"
+            }
           }
         }
-        stage('run server') {
-          steps {
-            sh 'yarn start &'
-          }
-        }
-        stage('Parallel stages') {
-	  parallel {
-            stage('Run A') {
-              steps {
-                sh 'yarn test-parallel'
-              }
-            }
-	    stage('Run B') {
-              steps {
-               sh 'yarn test-parallel'
-              }
-            }
-          }
-	}
-
+      }
     }
 }
 
