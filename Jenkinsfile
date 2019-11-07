@@ -21,12 +21,14 @@ pipeline {
         parallel {
           stage('Run A') {
             steps {
-              sh "yarn test-parallel --group 'GroupA'"
+              sh 'ifconfig'
+              sh "yarn test-parallel"
             }
           }
           stage('Run B') {
             steps {
-              sh "yarn test-parallel --group 'GroupB'"
+              sh 'ifconfig'
+              sh "yarn test-parallel"
             }
           }
         }
