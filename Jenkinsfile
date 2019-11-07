@@ -26,7 +26,7 @@ pipeline {
         parallel {
           stage('Run A') {
             agent {
-              label "Stage A"
+              label "master"
             }
             steps {
               sh 'ifconfig'
@@ -35,7 +35,7 @@ pipeline {
           }
           stage('Run B') {
             agent {
-              label "Stage B"
+              label "Asus_node"
             }
             steps {
               sh 'ifconfig'
