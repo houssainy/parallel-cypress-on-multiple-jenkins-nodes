@@ -20,6 +20,7 @@ pipeline {
             }
             steps {
               sh 'ifconfig'
+              sh 'sleep 10'
               sh "yarn test-parallel"
             }
           }
