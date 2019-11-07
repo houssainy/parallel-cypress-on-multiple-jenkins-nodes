@@ -1,5 +1,5 @@
 pipeline {
-    agent nones
+    agent none
     stages {
       stage('Install yarn') {
           steps {
