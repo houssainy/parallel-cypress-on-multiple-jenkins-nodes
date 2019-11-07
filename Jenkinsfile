@@ -1,22 +1,6 @@
 pipeline {
-    agent any
+    agent none
     stages {
-      stage('Install yarn') {
-        steps {
-            sh 'npm i yarn -g'
-        }
-      }
-      stage('Install packages') {
-        steps {
-          sh 'rm -rf node_modules/'
-          sh 'yarn install'
-        }
-      }
-      stage('run server') {
-        steps {
-          sh 'yarn start &'
-        }
-      }
       stage('Parallel stages') {
         parallel {
           stage('Run A') {
@@ -25,6 +9,10 @@ pipeline {
             }
             steps {
               sh 'ifconfig'
+              sh 'npm i yarn -g'
+              sh 'rm -rf node_modules/'
+              sh 'yarn install'
+              sh 'yarn start &'
               sh "yarn test-parallel"
             }
           }
@@ -34,6 +22,10 @@ pipeline {
             }
             steps {
               sh 'ifconfig'
+              sh 'npm i yarn -g'
+              sh 'rm -rf node_modules/'
+              sh 'yarn install'
+              sh 'yarn start &'
               sh "yarn test-parallel"
             }
           }
