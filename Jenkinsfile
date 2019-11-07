@@ -21,6 +21,7 @@ pipeline {
               label "Asus_node"
             }
             steps {
+              sh 'export $PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin'
               sh 'ifconfig'
               sh 'npm i yarn -g'
               sh 'rm -rf node_modules/'
