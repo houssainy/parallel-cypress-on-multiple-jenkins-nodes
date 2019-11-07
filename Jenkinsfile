@@ -16,7 +16,7 @@ pipeline {
             agent any
             steps {
               sh 'ifconfig'
-              sh 'sleep 15'
+              sh 'sleep 10'
               sh "yarn test-parallel"
             }
           }
