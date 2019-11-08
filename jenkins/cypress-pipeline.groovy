@@ -10,10 +10,10 @@ pipeline {
             steps {
               sh """
                 ifconfig
-                sh npm i yarn -g
-                sh rm -r node_modules/
-                sh yarn install
-                sh yarn test-parallel
+                npm i yarn -g
+                rm -r node_modules/
+                yarn install
+                yarn test-parallel
               """     }
           }
           stage('Run B') {
@@ -21,10 +21,10 @@ pipeline {
             steps {
               sh """
                 ifconfig
-                sh npm i yarn -g
-                sh rm -r node_modules/
-                sh yarn install
-                sh yarn test-parallel
+                npm i yarn -g
+                rm -r node_modules/
+                yarn install
+                yarn test-parallel
               """
             }
           }
