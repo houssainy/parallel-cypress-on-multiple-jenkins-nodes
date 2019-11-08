@@ -9,6 +9,8 @@ pipeline {
             agent any
             steps {
               sh 'ifconfig'
+              sh 'rm -r node_modules/'
+              sh 'yarn install'
               sh "yarn test-parallel"
             }
           }
@@ -16,7 +18,8 @@ pipeline {
             agent any
             steps {
               sh 'ifconfig'
-              sh 'sleep 10'
+              sh 'rm -r node_modules/'
+              sh 'yarn install'
               sh "yarn test-parallel"
             }
           }
