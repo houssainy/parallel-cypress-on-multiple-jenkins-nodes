@@ -6,7 +6,7 @@ pipeline {
       stage('Parallel stages') {
         parallel {
           stage('Run A') {
-            agent { label: 'cypress' }
+            agent { label 'cypress' }
             steps {
               sh 'ifconfig'
               sh 'npm i yarn -g'
@@ -16,7 +16,7 @@ pipeline {
             }
           }
           stage('Run B') {
-            agent { label: 'cypress' }
+            agent { label 'cypress' }
             steps {
               sh 'ifconfig'
               sh 'npm i yarn -g'
