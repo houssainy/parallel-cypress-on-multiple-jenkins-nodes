@@ -1,32 +1,27 @@
-pipeline {
-    agent none
-    tools {nodejs "nodejs"}
+def meteorRunner = "meteor"
+def cypressLabel = "cypress"
 
-    stages {
-      stage('Parallel stages') {
-        parallel {
-          stage('Run A') {
-            agent { label 'cypress' }
+pipeline {
+  agent none
+
+  stages {
+    stage("Parallel stages") {
+      parallel {
+
+        for (i = 0; i <3; i++) {
+          stage("Agent - ${i}") {
+            agent { label cypressLabel }
             steps {
-              sh 'ifconfig'
-              sh 'npm i yarn -g'
-              sh 'rm -r node_modules/'
-              sh 'yarn install'
-              sh "yarn test-parallel"
-            }
-          }
-          stage('Run B') {
-            agent { label 'cypress' }
-            steps {
-              sh 'ifconfig'
-              sh 'npm i yarn -g'
-              sh 'rm -r node_modules/'
-              sh 'yarn install'
-              sh "yarn test-parallel"
+              sh "cd \${WORKSPACE}"
+              sh "export PATHABLE_NEXT_HOME=\${WORKSPACE}"
+              sh "./scripts/db/reimport.sh staging test-data datasets"
+              sh "./scripts/db/fix-community-domains.sh staging"
+              sh "${meteorRunner} yarn cypress:run"
             }
           }
         }
       }
     }
+  }
 }
 
