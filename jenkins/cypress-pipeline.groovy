@@ -8,24 +8,21 @@ pipeline {
           stage('Run A') {
             agent { label 'cypress1' }
             steps {
-              sh """
-                ifconfig
-                npm i yarn -g
-                rm -r node_modules/
-                yarn install
-                yarn test-parallel
-              """     }
+              sh 'ifconfig'
+              sh 'npm i yarn -g'
+              sh 'rm -r node_modules/'
+              sh 'yarn install'
+              sh "yarn test-parallel"
+            }
           }
           stage('Run B') {
             agent { label 'cypress2' }
             steps {
-              sh """
-                ifconfig
-                npm i yarn -g
-                rm -r node_modules/
-                yarn install
-                yarn test-parallel
-              """
+              sh 'ifconfig'
+              sh 'npm i yarn -g'
+              sh 'rm -r node_modules/'
+              sh 'yarn install'
+              sh "yarn test-parallel"
             }
           }
         }
