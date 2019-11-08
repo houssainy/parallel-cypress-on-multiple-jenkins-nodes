@@ -25,14 +25,3 @@ System.out.println(cypressLabel)
 
 
 System.out.println(cypressStages)
-
-pipeline {
-  agent none
-
-  stages {
-    stage("Parallel stages") {
-      parallel cypressStages
-    }
-  }
-}
-
