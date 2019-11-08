@@ -18,6 +18,14 @@ for (i = 0; i < 3; i++) {
   }
 }
 
+
+System.out.println("HELLOOOOOOOOOOOOOOOOOoo")
+
+System.out.println(cypressLabel)
+
+
+System.out.println(cypressStages)
+
 pipeline {
   agent none
 
