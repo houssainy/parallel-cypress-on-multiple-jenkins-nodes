@@ -16,12 +16,13 @@ node {
 def doDynamicParallelSteps(){
   def tests = [:]
   for (int i = 1; i <= 3; i++) {
-    tests["stage ${i}"] = {
-      node("cypress1") {
-        String name = "stage ${i}"
-        stage(name) {
+    String x = i
+
+    tests["stage ${x}"] = {
+      node("cypress${x}") {
+        stage("stage ${x}") {
           sh 'ifconfig'
-          echo "${name}"
+          echo "${x}"
         }
       }
     }
