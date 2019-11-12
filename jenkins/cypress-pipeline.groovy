@@ -16,9 +16,8 @@ pipeline {
             for (int i = 0; i < numberOfInstances; i++) {
               buildStages["Agent - ${i}"] = {
                 stage("${i}") {
-                  steps {
-                    sh 'date'
-                  }
+                  sh 'ifconfig'
+                  sh 'date'
                 }
               }
             }
