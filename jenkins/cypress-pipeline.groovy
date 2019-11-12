@@ -5,7 +5,9 @@ def numberOfInstances = 3
 
 node("master") {
   stage('Build') {
-    doBuildParallelSteps()
+    sh "ifconfig"
+    sh "meteor yarn install"
+    // doBuildParallelSteps()
   }
 }
 
@@ -15,20 +17,20 @@ node {
   }
 }
 
-def doBuildParallelSteps() {
-  def tests = [:]
-  for (int i = 1; i <= 3; i++) {
-    String x = i
+// def doBuildParallelSteps() {
+//   def tests = [:]
+//   for (int i = 1; i <= 3; i++) {
+//     String x = i
 
-    tests["stage ${x}"] = {
-      stage("stage ${x}") {
-        sh 'ifconfig'
-        echo "${x}"
-      }
-    }
-  }
-  parallel tests
-}
+//     tests["stage ${x}"] = {
+//       stage("stage ${x}") {
+//         sh 'ifconfig'
+
+//       }
+//     }
+//   }
+//   parallel tests
+// }
 
 def doDynamicParallelSteps(){
   def tests = [:]
@@ -39,7 +41,7 @@ def doDynamicParallelSteps(){
       node("cypress${x}") {
         stage("stage ${x}") {
           sh 'ifconfig'
-          echo "${x}"
+          sh "meteor yarn test-parallel"
         }
       }
     }
