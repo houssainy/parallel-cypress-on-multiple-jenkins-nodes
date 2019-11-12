@@ -19,19 +19,19 @@ pipeline {
     stage("Build") {
       steps {
         script {
-          def tests = [:]
+          def buildStages = [:]
           for (int i = 1; i <= numberOfInstances; i++) {
-            String x = i
+            int currentIndex = i
 
-            tests["Agent - ${x}"] = {
-              node("cypress${x}") {
-                stage("Agent - ${x}") {
+            buildStages["Agent - ${currentIndex}"] = {
+              node("${cypressLabel}${currentIndex}") {
+                stage("Agent - ${currentIndex}") {
                   sh 'ifconfig'
                 }
               }
             }
           }
-          parallel tests
+          parallel buildStages
         }
       }
     }
