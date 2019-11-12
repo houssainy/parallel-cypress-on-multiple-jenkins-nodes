@@ -18,7 +18,7 @@ def getBuildStages() {
     int currentIndex = i
 
     buildStages["Agent - ${currentIndex}"] = {
-      node("${cypressLabel}${currentIndex}") {
+      node("cypress${currentIndex}") {
         stage("Agent - ${currentIndex}") {
           sh "cd \${WORKSPACE}"
           sh "meteor npm install -g yarn"
