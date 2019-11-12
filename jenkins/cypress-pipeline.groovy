@@ -7,7 +7,6 @@ node("master") {
   stage('Build') {
     sh "ifconfig"
     sh "meteor yarn install"
-    // doBuildParallelSteps()
   }
 }
 
