@@ -3,6 +3,7 @@ def cypressLabel = "cypress"
 
 def stageClousre = {
   stage("${it}") {
+    echo "${i}"
     sh 'date'
   }
 }
