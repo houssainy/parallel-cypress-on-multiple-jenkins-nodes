@@ -3,15 +3,16 @@ def cypressLabel = "cypress"
 
 def numberOfInstances = 3
 
-node("master") {
-  stage('Build') {
-        sh 'ifconfig'
-  }
-}
 
 node {
   stage('Run') {
     doDynamicParallelSteps()
+  }
+}
+
+node("master") {
+  stage('Build') {
+        sh 'ifconfig'
   }
 }
 
