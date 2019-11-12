@@ -2,9 +2,9 @@ def meteorRunner = "meteor"
 def cypressLabel = "cypress"
 
 def stageClousre = {
-  stage("${it}") {
+  stage("stage ${it}") {
     steps {
-      echo "${i}"
+      echo "${it}"
       sh 'date'
     }
   }
@@ -21,7 +21,7 @@ pipeline {
         script {
           def tests = [:]
           for (int i = 0; i < 3; i++) {
-            tests["${i}"] = stageClousre(i)
+            tests["kokokokokok ${i}"] = stageClousre(i)
           }
 
           parallel tests
