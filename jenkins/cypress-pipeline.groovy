@@ -14,11 +14,11 @@ node {
 def doDynamicParallelSteps(){
   def tests = [:]
   for (int i = 0; i < numberOfInstances; i++) {
-    tests["${f}"] = {
+    tests["${i}"] = {
       node {
-        stage("${f}") {
+        stage("${i}") {
           sh 'ifconfig'
-          echo '${f}'
+          echo '${i}'
         }
       }
     }
