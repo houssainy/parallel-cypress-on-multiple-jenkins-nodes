@@ -6,6 +6,8 @@ pipeline {
 
   stages {
     stage("Parallel stages") {
+      agent cypressLabel
+
       steps {
         script {
             def tests = [:]
