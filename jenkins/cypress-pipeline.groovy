@@ -5,9 +5,7 @@ def numberOfInstances = 3
 
 node("master") {
   stage('Build') {
-    sh "ifconfig"
-    git 'git@github.com:houssainy/parallel-cypress-on-multiple-jenkins-nodes.git'
-    sh "meteor yarn install"
+    doBuildParallelSteps()
   }
 }
 
@@ -17,20 +15,21 @@ node {
   }
 }
 
-// def doBuildParallelSteps() {
-//   def tests = [:]
-//   for (int i = 1; i <= 3; i++) {
-//     String x = i
+def doBuildParallelSteps() {
+  def tests = [:]
+  for (int i = 1; i <= 3; i++) {
+    String x = i
 
-//     tests["stage ${x}"] = {
-//       stage("stage ${x}") {
-//         sh 'ifconfig'
-
-//       }
-//     }
-//   }
-//   parallel tests
-// }
+    tests["stage ${x}"] = {
+      stage("stage ${x}") {
+        sh "ifconfig"
+        git 'git@github.com:houssainy/parallel-cypress-on-multiple-jenkins-nodes.git'
+        sh "meteor yarn install"
+      }
+    }
+  }
+  parallel tests
+}
 
 def doDynamicParallelSteps(){
   def tests = [:]
