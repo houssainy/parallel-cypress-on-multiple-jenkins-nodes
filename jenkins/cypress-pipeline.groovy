@@ -1,4 +1,6 @@
-def cypressLabel = "cypress"
+String cypressLabel = "cypress"
+
+int numberOfInstances = 3
 
 def installDependencies = """
 meteor yarn install || error=true
@@ -18,12 +20,12 @@ pipeline {
       steps {
         script {
           def tests = [:]
-          for (int i = 1; i <= 3; i++) {
+          for (int i = 1; i <= numberOfInstances; i++) {
             String x = i
 
-            tests["stage ${x}"] = {
+            tests["Agent - ${x}"] = {
               node("cypress${x}") {
-                stage("stage ${x}") {
+                stage("Agent - ${x}") {
                   sh 'ifconfig'
                 }
               }
