@@ -8,18 +8,16 @@ pipeline {
     stage("Parallel stages") {
       agent { label cypressLabel }
 
-      steps {
-        script {
-            def tests = [:]
-            for (int i = 0; i < 3; i++) {
-                tests["${i}"] = {
-                  stage("${i}") {
-                      sh 'date'
-                  }
+      script {
+          def tests = [:]
+          for (int i = 0; i < 3; i++) {
+              tests["${i}"] = {
+                stage("${i}") {
+                    sh 'date'
                 }
-            }
-            parallel tests
-        }
+              }
+          }
+          parallel tests
       }
     }
   }
