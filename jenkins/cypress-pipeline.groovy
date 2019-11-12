@@ -3,7 +3,7 @@ def cypressLabel = "cypress"
 
 def numberOfInstances = 3
 
-node {
+node("master") {
   stage('Build') {
     doBuildParallelSteps()
   }
