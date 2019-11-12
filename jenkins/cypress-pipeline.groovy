@@ -13,7 +13,7 @@ node {
 
 def doDynamicParallelSteps(){
   def tests = [:]
-  for (int i = 0; i < numberOfInstances; i++) {
+  for (int i = 0; i < 3; i++) {
     tests["${i}"] = {
       node {
         stage("${i}") {
