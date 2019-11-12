@@ -14,13 +14,9 @@ pipeline {
             def buildStages = [:]
             for (int i = 0; i < numberOfInstances; i++) {
               buildStages["Agent - ${i}"] = {
-                node {
-                  agent {label cypressLabel}
-
-                  stage("${i}") {
-                    sh 'ifconfig'
-                    sh 'date'
-                  }
+                steps {
+                  sh 'ifconfig'
+                  sh 'date'
                 }
               }
             }
