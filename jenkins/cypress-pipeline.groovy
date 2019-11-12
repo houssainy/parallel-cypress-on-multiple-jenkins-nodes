@@ -6,6 +6,7 @@ def numberOfInstances = 3
 node("master") {
   stage('Build') {
     sh "ifconfig"
+    git 'git@github.com:houssainy/parallel-cypress-on-multiple-jenkins-nodes.git'
     sh "meteor yarn install"
   }
 }
