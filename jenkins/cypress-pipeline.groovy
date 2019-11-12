@@ -27,7 +27,7 @@ pipeline {
 
   stages {
     stage("Parallel stages") {
-      parallel prepareBuildStages()
+      parallel(prepareBuildStages())
     }
   }
 }
