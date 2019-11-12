@@ -8,6 +8,7 @@ pipeline {
 
   stages {
     stage("Parallel stages") {
+      agent none
 
       steps {
         script {
