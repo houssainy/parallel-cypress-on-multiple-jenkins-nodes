@@ -20,7 +20,7 @@ pipeline {
 
   stages {
     stage("Parallel stages") {
-      parallel buildStages
+      parallel { buildStages }
     }
   }
 }
