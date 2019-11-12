@@ -17,7 +17,10 @@ pipeline {
               buildStages["Agent - ${i}"] = {
                 stage("${i}") {
                   agent {label "cypress${i}"}
-                  sh 'date'
+
+                  steps {
+                    sh 'date'
+                  }
                 }
               }
             }
