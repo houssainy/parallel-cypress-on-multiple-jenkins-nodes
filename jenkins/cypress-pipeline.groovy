@@ -6,6 +6,7 @@ def numberOfInstances = 3
 
 node {
   stage('Build') {
+    sh 'ifconfig'
     doDynamicParallelSteps()
   }
 }
