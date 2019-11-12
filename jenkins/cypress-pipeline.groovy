@@ -8,7 +8,7 @@ pipeline {
 
   stages {
     stage("Parallel stages") {
-      agent none
+      agent {label cypressLabel}
 
       steps {
         script {
@@ -16,8 +16,6 @@ pipeline {
             for (int i = 0; i < numberOfInstances; i++) {
               buildStages["Agent - ${i}"] = {
                 stage("${i}") {
-                  agent {label "cypress${i}"}
-
                   steps {
                     sh 'date'
                   }
