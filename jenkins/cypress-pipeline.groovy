@@ -7,19 +7,17 @@ pipeline {
   stages {
     stage("Parallel stages") {
       steps {
-          script {
-              def tests = [:]
-              for (int i = 0; i < 3; i++) {
-                  tests["${i}"] = {
-                      node {
-                          stage("${i}") {
-                              sh 'date'
-                          }
-                      }
+        script {
+            def tests = [:]
+            for (int i = 0; i < 3; i++) {
+                tests["${i}"] = {
+                  stage("${i}") {
+                      sh 'date'
                   }
-              }
-              parallel tests
-          }
+                }
+            }
+            parallel tests
+        }
       }
     }
   }
