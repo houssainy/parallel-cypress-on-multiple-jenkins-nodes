@@ -1,6 +1,12 @@
 def meteorRunner = "meteor"
 def cypressLabel = "cypress"
 
+def stageClousre = {
+  stage("${it}") {
+    sh 'date'
+  }
+}
+
 pipeline {
   agent none
 
@@ -8,16 +14,15 @@ pipeline {
     stage("Parallel stages") {
       agent { label cypressLabel }
 
-      script {
+      steps {
+        script {
           def tests = [:]
           for (int i = 0; i < 3; i++) {
-              tests["${i}"] = {
-                stage("${i}") {
-                    sh 'date'
-                }
-              }
+            tests["${i}"] = stageClousre(i)
           }
+
           parallel tests
+        }
       }
     }
   }
