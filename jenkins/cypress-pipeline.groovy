@@ -9,6 +9,7 @@ pipeline {
   stages {
     stage("Parallel stages") {
 
+      agent any
       steps {
         script {
             def buildStages = [:]
