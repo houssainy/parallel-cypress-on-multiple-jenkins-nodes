@@ -16,8 +16,7 @@ pipeline {
             for (int i = 0; i < numberOfInstances; i++) {
               buildStages["Agent - ${i}"] = {
                 stage("${i}") {
-                  agent { label cypressLabel }
-
+                  agent {label "cypress${i}"}
                   sh 'date'
                 }
               }
