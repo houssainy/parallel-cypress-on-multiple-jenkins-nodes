@@ -6,7 +6,7 @@ pipeline {
 
   stages {
     stage("Parallel stages") {
-      agent cypressLabel
+      agent { label cypressLabel }
 
       steps {
         script {
