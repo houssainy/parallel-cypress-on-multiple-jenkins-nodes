@@ -20,7 +20,7 @@ def doDynamicParallelSteps(){
       node("cypress1") {
         stage("stage ${i}") {
           sh 'ifconfig'
-          echo '${i}'
+          echo "${i}"
         }
       }
     }
