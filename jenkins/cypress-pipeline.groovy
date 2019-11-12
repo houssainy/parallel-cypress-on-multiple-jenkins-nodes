@@ -18,7 +18,7 @@ def doDynamicParallelSteps(){
   for (int i = 1; i <= 3; i++) {
     tests["stage ${i}"] = {
       node("cypress1") {
-        def name = "stage ${i}"
+        String name = "stage ${i}"
         stage(name) {
           sh 'ifconfig'
           echo "${name}"
