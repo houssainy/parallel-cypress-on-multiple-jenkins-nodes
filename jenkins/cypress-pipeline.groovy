@@ -8,7 +8,6 @@ pipeline {
 
   stages {
     stage("Parallel stages") {
-      agent {label cypressLabel}
 
       steps {
         script {
