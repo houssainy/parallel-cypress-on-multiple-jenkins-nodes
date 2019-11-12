@@ -14,7 +14,7 @@ fi
 
 def getBuildStages() {
   def buildStages = [:]
-  for (int i = 1; i <= numberOfInstances; i++) {
+  for (int i = 1; i <= 3; i++) {
     int currentIndex = i
 
     buildStages["Agent - ${currentIndex}"] = {
