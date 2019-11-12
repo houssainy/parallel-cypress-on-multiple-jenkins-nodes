@@ -1,14 +1,7 @@
 def meteorRunner = "meteor"
 def cypressLabel = "cypress"
 
-def stageClousre = {
-  stage("stage ${it}") {
-    steps {
-      echo "${it}"
-      sh 'date'
-    }
-  }
-}
+def numberOfInstances = 3
 
 pipeline {
   agent none
@@ -19,12 +12,16 @@ pipeline {
 
       steps {
         script {
-          def tests = [:]
-          for (int i = 0; i < 3; i++) {
-            tests["kokokokokok ${i}"] = stageClousre(i)
-          }
+            def buildStages = [:]
+            for (int i = 0; i < numberOfInstances; i++) {
+              buildStages["Agent - ${i}"] = {
+                stage("${i}") {
+                  sh 'date'
+                }
+              }
+            }
 
-          parallel tests
+            parallel buildStages
         }
       }
     }
