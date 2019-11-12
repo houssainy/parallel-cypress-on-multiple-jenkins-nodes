@@ -1,6 +1,6 @@
-String cypressLabel = "cypress"
+cypressLabel = "cypress"
 
-int numberOfInstances = 3
+numberOfInstances = 3
 
 def installDependencies = """
 meteor yarn install || error=true
@@ -14,11 +14,11 @@ fi
 
 def getBuildStages() {
   def buildStages = [:]
-  for (int i = 1; i <= 3; i++) {
+  for (int i = 1; i <= numberOfInstances; i++) {
     int currentIndex = i
 
     buildStages["Agent - ${currentIndex}"] = {
-      node("cypress${currentIndex}") {
+      node("${cypressLabel}${currentIndex}") {
         stage("Agent - ${currentIndex}") {
           sh "cd \${WORKSPACE}"
           sh "meteor npm install -g yarn"
