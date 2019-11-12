@@ -3,7 +3,7 @@ def cypressLabel = "cypress"
 
 def numberOfInstances = 3
 
-node("master") {
+node {
   stage('Build') {
     doBuildParallelSteps()
   }
@@ -21,10 +21,12 @@ def doBuildParallelSteps() {
     String x = i
 
     tests["stage ${x}"] = {
-      stage("stage ${x}") {
-        sh "ifconfig"
-        git 'git@github.com:houssainy/parallel-cypress-on-multiple-jenkins-nodes.git'
-        sh "meteor yarn install"
+      node("cypress${x}") {
+        stage("stage ${x}") {
+          sh "ifconfig"
+          git 'git@github.com:houssainy/parallel-cypress-on-multiple-jenkins-nodes.git'
+          sh "meteor yarn install"
+        }
       }
     }
   }
