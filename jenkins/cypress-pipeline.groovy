@@ -6,6 +6,8 @@
  */
 def meteorRunner = 'meteor'
 
+evaluate(new File("./helpers/install-yarn.groovy"))
+
 cypressLabel = "cypress"
 // TODO(@houssainy) numberOfInstances should be dynamically fetched using AWS APIs
 numberOfInstances = 3
@@ -20,6 +22,7 @@ pipeline {
       steps {
 
         sh "echo \$HOME"
+
       }
     }
   }
