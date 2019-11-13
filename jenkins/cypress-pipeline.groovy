@@ -8,9 +8,6 @@ def meteorRunner = 'meteor'
 
 evaluate(new File("./helpers/install-yarn.groovy"))
 
-println(answer)
-println(installYarn)
-
 cypressLabel = "cypress"
 // TODO(@houssainy) numberOfInstances should be dynamically fetched using AWS APIs
 numberOfInstances = 3
@@ -57,6 +54,11 @@ def getBuildStages() {
     buildStages["Agent - ${currentIndex}"] = {
       node("${cypressLabel}${currentIndex}") {
         stage("Agent - ${currentIndex}") {
+
+          echo "${answer}"
+          echo "${installYarn}"
+          sh "${installYarn}"
+
           checkout scm
           sh "cd \${WORKSPACE}"
           sh """
