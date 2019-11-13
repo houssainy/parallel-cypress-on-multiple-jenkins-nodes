@@ -52,7 +52,7 @@ def getBuildStages() {
     int currentIndex = i
 
     buildStages["Agent - ${currentIndex}"] = {
-      node("${cypressLabel}${currentIndex}") {
+      node("master") {
         stage("Agent - ${currentIndex}") {
 
           echo "${answer}"
