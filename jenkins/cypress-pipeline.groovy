@@ -19,9 +19,12 @@ pipeline {
   stages {
     // First stage is to run db scripts to re-import the test datasets
     stage("Re-import Database") {
-      sh "echo ${answer}"
-      sh "echo ${installYarn}"
-      sh "${installYarn}"
+      steps {
+
+        sh "echo ${answer}"
+        sh "echo ${installYarn}"
+        sh "${installYarn}"
+      }
     }
   }
 }
