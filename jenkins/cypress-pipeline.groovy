@@ -18,6 +18,7 @@ pipeline {
     // First stage is to run db scripts to re-import the test datasets
     stage("Re-import Database") {
       steps {
+        checkout scm
 
         sh "echo \$HOME"
         sh "meteor yarn install"
