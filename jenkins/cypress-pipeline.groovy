@@ -14,7 +14,7 @@ numberOfInstances = 3
 
 // Declirative Pipeline Script
 pipeline {
-  agent {label "master"} // Agents will be specified in the parallel stages
+  agent {label "cypress4"} // Agents will be specified in the parallel stages
 
   stages {
     // First stage is to run db scripts to re-import the test datasets
