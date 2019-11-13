@@ -14,24 +14,14 @@ numberOfInstances = 3
 
 // Declirative Pipeline Script
 pipeline {
-  agent none // Agents will be specified in the parallel stages
+  agent {label "master"} // Agents will be specified in the parallel stages
 
   stages {
     // First stage is to run db scripts to re-import the test datasets
     stage("Re-import Database") {
-      steps {
-        script {
-          parallel getBuildStages()
-        }
-      }
-    }
-    // Second stage is to run cypress tests using --parallel
-    stage("Run Cypress tests") {
-      steps {
-        script {
-          parallel getCypressTestStages()
-        }
-      }
+      sh "echo ${answer}"
+      sh "echo ${installYarn}"
+      sh "${installYarn}"
     }
   }
 }
@@ -55,8 +45,8 @@ def getBuildStages() {
       node("master") {
         stage("Agent - ${currentIndex}") {
 
-          echo "${answer}"
-          echo "${installYarn}"
+          sh "echo ${answer}"
+          sh "echo ${installYarn}"
           sh "${installYarn}"
         }
       }
