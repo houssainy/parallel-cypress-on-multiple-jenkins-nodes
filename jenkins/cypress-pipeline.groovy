@@ -58,24 +58,6 @@ def getBuildStages() {
           echo "${answer}"
           echo "${installYarn}"
           sh "${installYarn}"
-
-          checkout scm
-          sh "cd \${WORKSPACE}"
-          sh """
-            meteor npm install -g yarn
-
-            meteor yarn install || error=true
-
-            #Fail the build if there was an error
-            if [ \$error ]
-            then
-              rm -f yarn.lock
-              meteor yarn install --skip-integrity-check
-            fi
-          """
-          sh "export PATHABLE_NEXT_HOME=\${WORKSPACE}"
-          sh "./scripts/db/reimport.sh staging test-data datasets"
-          sh "./scripts/db/fix-community-domains.sh staging"
         }
       }
     }
