@@ -12,14 +12,12 @@ numberOfInstances = 3
 
 // Declirative Pipeline Script
 pipeline {
-  agent {label "cypress4"} // Agents will be specified in the parallel stages
+  agent {label "cypress3"} // Agents will be specified in the parallel stages
 
   stages {
     // First stage is to run db scripts to re-import the test datasets
     stage("Re-import Database") {
       steps {
-        checkout scm
-
         sh "echo \$HOME"
         sh "meteor yarn install"
         sh "yarn test-parallel"
