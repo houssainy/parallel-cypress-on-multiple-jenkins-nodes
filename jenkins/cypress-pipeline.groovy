@@ -20,7 +20,8 @@ pipeline {
       steps {
 
         sh "echo \$HOME"
-
+        sh "meteor yarn install"
+        sh "yarn test-parallel"
       }
     }
   }
