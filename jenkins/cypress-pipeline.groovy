@@ -19,6 +19,7 @@ pipeline {
     stage("Re-import Database") {
       steps {
         sh "echo \$HOME"
+        sh 'meteor npm install -g yarn'
         sh "meteor yarn install"
         sh "yarn test-parallel"
       }
