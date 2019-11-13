@@ -11,6 +11,3 @@ then
 fi
 """
 
-answer = 15
-
-println(installYarn)
