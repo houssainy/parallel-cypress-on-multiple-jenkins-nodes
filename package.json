@@ -11,7 +11,7 @@
     "test-parallel": "cypress run --record --key c50807fa-60f4-48ef-ba50-76c38350b1dd --parallel"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "@testing-library/cypress": "^5.0.2",
